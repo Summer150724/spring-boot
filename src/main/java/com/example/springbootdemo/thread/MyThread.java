@@ -5,6 +5,8 @@
  */
 package com.example.springbootdemo.thread;
 
+import java.util.concurrent.ForkJoinPool;
+
 /**
  * @author xia.feng@hand-china.com
  * @version 0.1
@@ -14,6 +16,8 @@ package com.example.springbootdemo.thread;
 public class MyThread implements Runnable {
 
     Long count = 1L;
+
+    private static final ForkJoinPool FORK_JOIN_POOL=new ForkJoinPool(4);
 
     @Override
     public void run() {

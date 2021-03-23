@@ -1,0 +1,14 @@
+# IOC流程分析
+1.读取配置(XML,注解,YAML)
+2.解析配置(BeanDefinitionReader)
+3.获取到定义信息(BeanDefinition)
+4.增强(BeanFactoryPostProcessor)->动态代理就是在这一步实现的
+5.实例化Bean(BeanFactory):填充属性->执行aware需要实现的方法->
+    BeanPostProcessor:before->init-method->BeanProcessor:after
+6.销毁(IOC销毁)
+
+
+#源码Debug
+非常重要的一个方法
+org.springframework.context.support.AbstractApplicationContext.refresh()
+1.创建BeanFactory:重要实现(DefaultListableBeanFactory);ConfigurableListableBeanFactory
