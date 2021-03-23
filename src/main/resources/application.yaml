@@ -3,20 +3,20 @@ spring:
     url: jdbc:mysql://localhost:3306/springboot_demo
     username: root
     password: root
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+    # driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      # Á¬½Ó³Ø×îĞ¡¿ÕÏĞÁ¬½ÓÊı
+      # è¿æ¥æ± æœ€å°ç©ºé—²è¿æ¥æ•°
       minimum-idle: ${SPRING_DATASOURCE_MINIMUM_IDLE:20}
-      # Á¬½Ó³ØÔÊĞíµÄ×î´óÁ¬½ÓÊı
+      # è¿æ¥æ± å…è®¸çš„æœ€å¤§è¿æ¥æ•°
       maximum-pool-size: ${SPRING_DATASOURCE_MAXIMUM_POOL_SIZE:200}
-      # µÈ´ıÁ¬½Ó³Ø·ÖÅäÁ¬½ÓµÄ×î´óÊ±³¤£¨ºÁÃë£©
+      # ç­‰å¾…è¿æ¥æ± åˆ†é…è¿æ¥çš„æœ€å¤§æ—¶é•¿ï¼ˆæ¯«ç§’ï¼‰
       connection-timeout: ${SPRING_DATASOURCE_CONNECTION_TIMEOUT:30000}
 
-# mybatisµÄmapperÊéĞ´Â·¾¶
+# mybatisçš„mapperä¹¦å†™è·¯å¾„
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   configuration:
-    # ÈÕÖ¾ÊµÏÖÀà
+    # æ—¥å¿—å®ç°ç±»
     # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
     default-statement-timeout: ${MYBATIS_DEFAULT_STATEMENT_TIMEOUT:120}
@@ -25,11 +25,11 @@ mybatis:
 
 logging:
   level:
-    # ÅäÖÃÄ¿Â¼ÏÂµÄÈÕÖ¾Êä³ö¼¶±ğ
+    # é…ç½®ç›®å½•ä¸‹çš„æ—¥å¿—è¾“å‡ºçº§åˆ«
     org.apache.ibatis: ${LOG_LEVEL:debug}
     com.example.springbootdemo: ${LOG_LEVEL:debug}
   file:
-    # ÅäÖÃÈÕÖ¾Êä³öÎÄ¼şµÄÂ·¾¶¼°ÎÄ¼şÃû
+    # é…ç½®æ—¥å¿—è¾“å‡ºæ–‡ä»¶çš„è·¯å¾„åŠæ–‡ä»¶å
     name: C:\Users\Summer\Desktop\springboot_demo.txt
 
 
