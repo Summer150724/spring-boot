@@ -9,6 +9,7 @@ import com.example.springbootdemo.rest.app.TestService;
 import com.example.springbootdemo.rest.domain.entity.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +20,8 @@ import java.util.List;
  * @date 2021-03-20 14:28
  * @description
  */
-@RestController("/test")
+@RestController("TestController")
+@RequestMapping("/mybatis/test")
 public class TestController {
 
     @Autowired

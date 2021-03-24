@@ -1,11 +1,13 @@
 package com.example.springbootdemo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.springbootdemo.design_pattern.prototype.Prototype;
 import com.example.springbootdemo.rest.domain.entity.Test;
 import com.example.springbootdemo.rest.domain.repository.TestRepository;
 import com.example.springbootdemo.proxy.MyProxy;
 import com.example.springbootdemo.proxy.ProxyTarget;
 import com.example.springbootdemo.proxy.ProxyTargetChild;
+import com.example.springbootdemo.rocket_mq.app.impl.ProducerServiceImpl;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -91,6 +93,12 @@ public class SpringBootDemoApplication {
         List<Test> select = testRepository.select();
         System.out.println(select);
         System.out.println(all);
+
+        // RocketMQ 测试
+        ProducerServiceImpl producerService = applicationContext.getBean(ProducerServiceImpl.class);
+        producerService.sendMsg("RocketMQTestMessage");
+
+
     }
 
 
