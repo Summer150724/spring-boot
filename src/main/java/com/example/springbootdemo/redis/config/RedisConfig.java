@@ -23,6 +23,7 @@ public class RedisConfig {
 
     @Bean
     public RedisTemplate redisTemplate(RedisTemplate redisTemplate) {
+        // TODO 到底先注入的哪个?最终生成的Bean又是哪个? 三级缓存
         //设置序列化Key的实例化对象
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         //设置序列化Value的实例化对象
