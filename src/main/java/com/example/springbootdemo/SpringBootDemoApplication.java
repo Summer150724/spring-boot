@@ -1,31 +1,26 @@
 package com.example.springbootdemo;
 
-import com.alibaba.fastjson.JSONObject;
+import com.example.springbootdemo.configuration.Mycroft;
 import com.example.springbootdemo.design_pattern.prototype.Prototype;
-import com.example.springbootdemo.rest.domain.entity.Test;
-import com.example.springbootdemo.rest.domain.repository.TestRepository;
 import com.example.springbootdemo.proxy.MyProxy;
 import com.example.springbootdemo.proxy.ProxyTarget;
 import com.example.springbootdemo.proxy.ProxyTargetChild;
-import com.example.springbootdemo.rocket_mq.app.impl.ProducerServiceImpl;
-import org.mybatis.spring.annotation.MapperScan;
+import com.example.springbootdemo.rest.domain.entity.Test;
+import com.example.springbootdemo.rest.domain.repository.TestRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.List;
 
-//@MapperScan(basePackages = {"com.example.springbootdemo.rest.infra.mapper"})
-@EnableAsync
-@SpringBootApplication
+@Mycroft
 public class SpringBootDemoApplication {
 
     public static void main(String[] args) throws Exception{
@@ -86,17 +81,6 @@ public class SpringBootDemoApplication {
         ProxyTargetChild  po= (ProxyTargetChild) beanFactory.getBean("ProxyTargetChild");
         po.invoke();
         po.invokeSync();
-
-        // Mybatis测试
-        TestRepository testRepository = (TestRepository)applicationContext.getBean("TestRepository");
-        List<Test> all = testRepository.getAll();
-        List<Test> select = testRepository.select();
-        System.out.println(select);
-        System.out.println(all);
-
-        // RocketMQ 测试
-        ProducerServiceImpl producerService = applicationContext.getBean(ProducerServiceImpl.class);
-        producerService.sendMsg("RocketMQTestMessage");
 
 
     }

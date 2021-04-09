@@ -4,7 +4,12 @@
 
     <select id="getAll" resultType="com.example.springbootdemo.rest.domain.entity.Test">
         SELECT
-        *
+        CASE WHEN
+        (IF ((columnA = 1), (columnA), (columnB))) THEN columnA
+        ELSE columnB END AS columnA,
+
+        columnB,
+        columnC
         FROM
         test
     </select>
