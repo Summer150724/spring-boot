@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadFactory;
 public class TreadTest {
 
 
-    public static void main(String[] args) throws InterruptedException {
+/*    public static void main(String[] args) throws InterruptedException {
         StringBuilder variable = new StringBuilder("a");
         System.out.println("variableInit:" + variable.hashCode());
         variable = new StringBuilder("s");
@@ -53,5 +53,5 @@ public class TreadTest {
             System.out.println(Thread.currentThread().getName() + "---" + finalVariable.hashCode());
         });
 
-    }
+    }*/
 }

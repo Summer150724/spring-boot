@@ -29,6 +29,16 @@ public class CircleA {
     @Autowired
     private TestRepository testRepository;
 
+
+    @Override
+    public String toString() {
+        return "CircleA{" +
+                "circleB=" + "circleB" +
+                ", circleC=" + "circleC" +
+                ", testRepository=" + testRepository +
+                '}';
+    }
+
     /**
      * 加上注解后,会循环依赖
      */

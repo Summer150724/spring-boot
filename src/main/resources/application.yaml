@@ -48,9 +48,9 @@ logging:
     # 配置目录下的日志输出级别
     org.apache.ibatis: ${LOG_LEVEL:debug}
     com.example.springbootdemo: ${LOG_LEVEL:debug}
-  file:
-    # 配置日志输出文件的路径及文件名
-    name: C:\Users\Summer\Desktop\springboot_demo.txt
+#  file:
+#    # 配置日志输出文件的路径及文件名
+#    name: C:\Users\Summer\Desktop\springboot_demo.txt
 
 rocketmq:
   name-server: 127.0.0.1:9876
@@ -58,3 +58,9 @@ rocketmq:
   producer:
     group: springboot_demo_group
     send-message-timeout: 3000
+
+mycroft:
+  config:
+    observer:
+      name: ${OBSERVER_NAME:MYCROFT}
+      ip: ${IP_ADDRESS:127.0.0.1}
