@@ -7,8 +7,10 @@ package com.example.springbootdemo.spring.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationContextInitializedEvent;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.stereotype.Component;
@@ -33,5 +35,7 @@ public class ContextRefreshedEventListener implements ApplicationListener<Contex
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         log.info("Mycroft-contextRefreshed,{}", contextRefreshedEvent);
+        ConfigurableApplicationContext applicationContext = (ConfigurableApplicationContext) contextRefreshedEvent.getApplicationContext();
+        applicationContext.stop();
     }
 }

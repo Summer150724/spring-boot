@@ -6,7 +6,9 @@
 package com.example.springbootdemo.spring.listener;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextStoppedEvent;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +30,7 @@ public class ContextStoppedEventListener implements ApplicationListener<ContextS
     @Override
     public void onApplicationEvent(ContextStoppedEvent contextStoppedEvent) {
         log.info("Mycroft-contextStopped,{}", contextStoppedEvent);
+        ConfigurableApplicationContext applicationContext  = (ConfigurableApplicationContext) contextStoppedEvent.getApplicationContext();
+        applicationContext.close();
     }
 }
