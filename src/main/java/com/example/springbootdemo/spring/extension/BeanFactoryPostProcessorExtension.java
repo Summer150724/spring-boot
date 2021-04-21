@@ -34,6 +34,6 @@ public class BeanFactoryPostProcessorExtension implements BeanFactoryPostProcess
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("Mycroft-ConfigurableListableBeanFactory:{}", beanFactory);
+        // log.info("Mycroft-ConfigurableListableBeanFactory:{}", beanFactory);
     }
 }

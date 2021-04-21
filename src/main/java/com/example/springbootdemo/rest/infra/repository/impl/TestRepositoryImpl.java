@@ -34,8 +34,8 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<Test> getAll() {
-        return testMapper.getAll();
+    public List<Test> getAll(Integer integer) {
+        return testMapper.getAll(integer);
     }
 
     @Transactional(rollbackFor = Exception.class)

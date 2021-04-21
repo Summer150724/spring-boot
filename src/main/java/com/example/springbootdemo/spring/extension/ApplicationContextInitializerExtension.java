@@ -21,7 +21,7 @@ import org.springframework.core.annotation.Order;
  */
 @Slf4j
 // 指定最高级别,优先执行
-@Order(Ordered.HIGHEST_PRECEDENCE)
+// @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ApplicationContextInitializerExtension implements ApplicationContextInitializer {
 
     /**

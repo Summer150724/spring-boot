@@ -2,6 +2,7 @@ package com.example.springbootdemo.rest.infra.mapper;
 
 import com.example.springbootdemo.rest.domain.entity.Test;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Mapper
 public interface TestMapper {
-    List<Test> getAll ();
+    List<Test> getAll (@Param("int") Integer integer);
 
     @Select(value = "select * from test where id = 5")
     List<Test> select();

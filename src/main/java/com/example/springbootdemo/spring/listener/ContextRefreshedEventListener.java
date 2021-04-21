@@ -36,6 +36,6 @@ public class ContextRefreshedEventListener implements ApplicationListener<Contex
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         log.info("Mycroft-contextRefreshed,{}", contextRefreshedEvent);
         ConfigurableApplicationContext applicationContext = (ConfigurableApplicationContext) contextRefreshedEvent.getApplicationContext();
-        applicationContext.stop();
+        // applicationContext.stop();
     }
 }

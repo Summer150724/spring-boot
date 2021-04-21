@@ -31,6 +31,6 @@ public class ContextStoppedEventListener implements ApplicationListener<ContextS
     public void onApplicationEvent(ContextStoppedEvent contextStoppedEvent) {
         log.info("Mycroft-contextStopped,{}", contextStoppedEvent);
         ConfigurableApplicationContext applicationContext  = (ConfigurableApplicationContext) contextStoppedEvent.getApplicationContext();
-        applicationContext.close();
+        // applicationContext.close();
     }
 }

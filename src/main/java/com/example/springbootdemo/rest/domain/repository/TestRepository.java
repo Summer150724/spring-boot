@@ -16,7 +16,7 @@ import java.util.List;
  * @description
  */
 public interface TestRepository {
-    List<Test> getAll ();
+    List<Test> getAll (Integer integer);
 
     List<Test> select();
 }

@@ -17,5 +17,5 @@ import java.util.List;
  */
 public interface TestService {
 
-    List<Test> getTest();
+    List<Test> getTest(Integer integer);
 }

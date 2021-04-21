@@ -55,7 +55,7 @@ public class InstantiationAwareBeanPostProcessorExtension implements Instantiati
      */
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-        log.info("Mycroft-postProcessBeforeInstantiation,beanName:{}", beanName);
+        // log.info("Mycroft-postProcessBeforeInstantiation,beanName:{}", beanName);
         return null;
     }
 
@@ -78,7 +78,7 @@ public class InstantiationAwareBeanPostProcessorExtension implements Instantiati
      */
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        log.info("Mycroft-postProcessAfterInstantiation,beanName:{}", beanName);
+        // log.info("Mycroft-postProcessAfterInstantiation,beanName:{}", beanName);
         return true;
     }
 
@@ -104,7 +104,7 @@ public class InstantiationAwareBeanPostProcessorExtension implements Instantiati
      */
     @Override
     public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
-        log.info("Mycroft-postProcessProperties,beanName:{}, PropertyValues:{}", beanName, pvs);
+        // log.info("Mycroft-postProcessProperties,beanName:{}, PropertyValues:{}", beanName, pvs);
         return pvs;
     }
 

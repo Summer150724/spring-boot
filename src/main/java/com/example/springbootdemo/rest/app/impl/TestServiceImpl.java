@@ -26,7 +26,7 @@ public class TestServiceImpl implements TestService {
     private TestRepository testRepository;
 
     @Override
-    public List<Test> getTest() {
-        return testRepository.getAll();
+    public List<Test> getTest(Integer integer) {
+        return testRepository.getAll(integer);
     }
 }
