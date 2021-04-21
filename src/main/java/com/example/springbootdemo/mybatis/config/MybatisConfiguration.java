@@ -5,11 +5,11 @@
  */
 package com.example.springbootdemo.mybatis.config;
 
-import com.example.springbootdemo.mybatis.intercept.SelectSqlInterceptor;
+import com.example.springbootdemo.mybatis.interceptor.MycroftSqlInterceptor;
+import com.example.springbootdemo.mybatis.interceptor.SelectSqlInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -21,13 +21,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnProperty(prefix = "mybatis.log", name = "intact", matchIfMissing = true)
-@ComponentScan({"com.example.springbootdemo.mybatis.intercept"})
+// @ComponentScan({"com.example.springbootdemo.mybatis.intercept"})
 public class MybatisConfiguration {
 
 
     @Bean
-    public SelectSqlInterceptor selectSqlInterceptor () {
-            return new SelectSqlInterceptor();
+    @ConditionalOnMissingBean({MycroftSqlInterceptor.class})
+    @ConditionalOnProperty(prefix = "mybatis.log", name = "intact", havingValue = "true")
+    public MycroftSqlInterceptor hahaSqlInterceptor () {
+            return new MycroftSqlInterceptor();
+    }
+
+    @Bean
+    public SelectSqlInterceptor selectSqlInterceptor() {
+        return new SelectSqlInterceptor();
     }
 
 }

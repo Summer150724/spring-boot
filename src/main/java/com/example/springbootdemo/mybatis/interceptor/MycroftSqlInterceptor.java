@@ -3,14 +3,11 @@
  * 版权： Copyright 2019-2024 XIA.FENG All Rights Reserved.
  * 描述：AUTHOR_XIAFENG
  */
-package com.example.springbootdemo.mybatis.intercept;
+package com.example.springbootdemo.mybatis.interceptor;
 
-import com.example.springbootdemo.mybatis.config.MybatisConfigurationProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
@@ -20,11 +17,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandlerRegistry;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
-import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +38,7 @@ import java.util.regex.Matcher;
                 Object.class}),
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class,
                 Object.class, RowBounds.class, ResultHandler.class})})
-public class SelectSqlInterceptor implements Interceptor {
+public class MycroftSqlInterceptor implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {

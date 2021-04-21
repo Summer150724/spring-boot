@@ -143,4 +143,13 @@
         </plugins>
     </build>
 
+    <!-- Choerodon制品库/scm-snapshot-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>scm-snapshot</id>
+            <url>https://api.choerodon.com.cn/rdupm/v1/nexus/proxy/1/repository/scm-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
 </project>

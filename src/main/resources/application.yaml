@@ -58,6 +58,10 @@ mybatis:
 #    # 配置日志输出文件的路径及文件名
 #    name: C:\Users\Summer\Desktop\springboot_demo.txt
 
+logging:
+  level:
+    com.example: ${LOG_LEVEL:debug}
+
 rocketmq:
   name-server: 127.0.0.1:9876
   # 生产者
