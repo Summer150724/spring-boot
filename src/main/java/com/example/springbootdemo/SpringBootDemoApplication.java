@@ -1,5 +1,7 @@
 package com.example.springbootdemo;
 
+import com.example.springbootdemo.rest.app.TestService;
+import com.example.springbootdemo.rest.domain.entity.Test;
 import com.example.springbootdemo.spring.extension.BeanPostProcessorExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
         // basePackages = {"com.example.springbootdemo"},
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com.example.springbootdemo.rocket_mq.*", "com.example.springbootdemo.redis.*"}))
 @EnableAsync
+@EnableAspectJAutoProxy // 什么时候开启的?
 @SpringBootApplication
 public class SpringBootDemoApplication {
 

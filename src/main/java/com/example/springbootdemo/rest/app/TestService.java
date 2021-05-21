@@ -18,4 +18,8 @@ import java.util.List;
 public interface TestService {
 
     List<Test> getTest(Integer integer);
+
+    List<Test> tests (List<Long> list);
+
+    void batchInsert();
 }

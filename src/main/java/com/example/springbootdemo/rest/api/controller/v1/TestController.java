@@ -5,15 +5,20 @@
  */
 package com.example.springbootdemo.rest.api.controller.v1;
 
+import com.example.springbootdemo.proxy.annotations.MethodInherited;
 import com.example.springbootdemo.rest.app.TestService;
 import com.example.springbootdemo.rest.domain.entity.Test;
+import com.example.springbootdemo.rest.domain.repository.TestRepository;
+import com.example.springbootdemo.rest.infra.annotation.ApiLog;
+import lombok.SneakyThrows;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author xia.feng@hand-china.com
@@ -27,9 +32,32 @@ public class TestController {
 
     @Autowired
     private TestService testService;
+    @Autowired
+    private TestRepository testRepository;
 
+    @SneakyThrows
     @GetMapping
-    public List<Test> getTest (@RequestParam Integer integer) {
-        return testService.getTest(integer);
+    @ApiLog(param = "summer", level = "info")
+    public ResponseEntity getTest (@RequestParam Integer integer) {
+/*        List<Test> test = testService.getTest(integer);
+        if (CollectionUtils.isEmpty(test)) {
+            throw new Exception("hahahaha");
+        }*/
+        List<Long> longs = new ArrayList<>();
+        for (int i = integer; i > 0; i--) {
+            longs.add(new Long(i--));
+        }
+        String ids = longs.stream().map(String::valueOf).collect(Collectors.joining(","));
+        // List<Test> tests = testService.tests(longs);
+        List<Test> tests = testRepository.selectByIds(ids);
+        return ResponseEntity.ok(tests);
+    }
+
+
+    @PostMapping
+    @ApiLog(param = "summer", level = "info")
+    public ResponseEntity<?> insertData () {
+        testService.batchInsert();
+        return ResponseEntity.ok("hello");
     }
 }

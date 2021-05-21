@@ -44,7 +44,7 @@ public class CircleA {
      */
     // @Async
     public void async(){
-        testRepository.select();
+        testRepository.select(null);
     }
 
 }

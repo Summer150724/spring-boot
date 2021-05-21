@@ -40,7 +40,17 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public List<Test> select(){
-        return testMapper.select();
+    public List<Test> select(List<Long> list){
+        return testMapper.select(list);
+    }
+
+    @Override
+    public void batchInsert(List<Test> test) {
+        testMapper.insert(test);
+    }
+
+    @Override
+    public List<Test> selectByIds(String ids) {
+        return testMapper.selectByIds(ids);
     }
 }

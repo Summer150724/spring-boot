@@ -37,7 +37,7 @@ public class SelectSqlInterceptor implements Interceptor {
         Object parameterObject = statementHandler.getParameterHandler().getParameterObject();
         //打印查询语句
         if (logger.isInfoEnabled()) {
-            logger.info(sql);
+            // logger.info(sql);
         }
         modifyLikeSql(sql, parameterObject, boundSql);
         logger.info("---------------25583 SelectSqlInterceptor end----------------");

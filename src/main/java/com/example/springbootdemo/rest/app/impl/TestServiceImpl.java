@@ -11,6 +11,8 @@ import com.example.springbootdemo.rest.domain.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,5 +30,19 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<Test> getTest(Integer integer) {
         return testRepository.getAll(integer);
+    }
+
+    @Override
+    public List<Test> tests(List<Long> list) {
+        return testRepository.select(list);
+    }
+
+    @Override
+    public void batchInsert() {
+        List<Test> tests = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            tests.add(new Test(new Long(i), new Long(i+1), new Date()));
+        }
+        testRepository.batchInsert(tests);
     }
 }

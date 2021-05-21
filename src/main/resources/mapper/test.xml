@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.springbootdemo.rest.infra.mapper.TestMapper">
+    <insert id="insert" parameterType="com.example.springbootdemo.rest.domain.entity.Test">
+        INSERT
+        INTO
+        test
+        (columnA, columnB, columnC)
+
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+        (
+            #{item.columnA},
+            #{item.columnB},
+            #{item.columnC}
+        )
+        </foreach>
+
+    </insert>
 
     <select id="getAll" resultType="com.example.springbootdemo.rest.domain.entity.Test">
         SELECT
@@ -14,5 +30,25 @@
         test
         WHERE
         1 = #{int}
+    </select>
+    <select id="select" resultType="com.example.springbootdemo.rest.domain.entity.Test">
+        SELECT
+        *
+        FROM
+        test t
+        WHERE
+        t.id IN (
+        <foreach collection="list" item="item" separator=",">
+            #{item}
+        </foreach>
+        )
+    </select>
+    <select id="selectByIds" resultType="com.example.springbootdemo.rest.domain.entity.Test">
+        SELECT
+        *
+        FROM
+        test t
+        where
+        t.id IN (${ids})
     </select>
 </mapper>

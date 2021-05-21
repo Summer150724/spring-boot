@@ -18,5 +18,9 @@ import java.util.List;
 public interface TestRepository {
     List<Test> getAll (Integer integer);
 
-    List<Test> select();
+    List<Test> select(List<Long> list);
+
+    void batchInsert(List<Test> test);
+
+    List<Test> selectByIds(String ids);
 }
