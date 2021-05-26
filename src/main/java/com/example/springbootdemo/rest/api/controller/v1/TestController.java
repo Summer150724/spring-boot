@@ -35,6 +35,11 @@ public class TestController {
     @Autowired
     private TestRepository testRepository;
 
+    @GetMapping("/haha")
+    public ResponseEntity haha () {
+        return ResponseEntity.ok("hello");
+    }
+
     @SneakyThrows
     @GetMapping
     @ApiLog(param = "summer", level = "info")

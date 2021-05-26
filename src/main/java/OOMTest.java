@@ -8,10 +8,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +21,7 @@ public class OOMTest {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println(BigDecimal.ZERO.compareTo(new BigDecimal(-1)));
+/*
         List<Byte[]> list = new ArrayList<>();
         int i = 0;
         try {
@@ -37,9 +34,13 @@ public class OOMTest {
             e.printStackTrace();
             System.out.println("执行了"+i+"次");
         }
+*/
 
-
-
+    List<String> strings = new ArrayList<>();
+   strings.add("0");
+    strings.add("hello");
+        String s = strings.stream().filter(Objects::nonNull).max(String::compareTo).orElse(null);
+        System.out.println(s);
 
     }
 
