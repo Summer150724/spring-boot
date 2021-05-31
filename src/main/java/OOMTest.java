@@ -36,12 +36,12 @@ public class OOMTest {
         }
 */
 
-    List<String> strings = new ArrayList<>();
-   strings.add("0");
-    strings.add("hello");
-        String s = strings.stream().filter(Objects::nonNull).max(String::compareTo).orElse(null);
-        System.out.println(s);
-
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            list.add(i);
+        }
+        list = list.stream().filter(i -> i<15).collect(Collectors.toList());
+        System.out.println(list);
     }
 
 }
