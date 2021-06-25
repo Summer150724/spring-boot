@@ -26,7 +26,9 @@ import java.util.stream.Collectors;
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com.example.springbootdemo.rocket_mq.*", "com.example.springbootdemo.redis.*"}))
 @EnableAsync
 @EnableAspectJAutoProxy // 什么时候开启的?
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+})
 public class SpringBootDemoApplication {
 
     public static void main(String[] args) throws Exception{

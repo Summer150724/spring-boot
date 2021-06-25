@@ -36,12 +36,44 @@ public class OOMTest {
         }
 */
 
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(i);
+
+
+/*        while (true) {
+            Scanner in = new Scanner(System.in);
+            int input = in.nextInt();
+            System.out.println(input/200);
+        }*/
+
+// 测试++i和i++
+/*        for (int i = 0; i < 10; i++) {
+            int we = i++ * 10;
+            System.out.println("we:"+we);
         }
-        list = list.stream().filter(i -> i<15).collect(Collectors.toList());
+
+        for (int i = 0; i < 10; i++) {
+            int ew = ++i * 10;
+            System.out.println("ew:"+ew);
+        }*/
+
+
+List list = new ArrayList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+list.add(5);
+list.add(6);
+list.add(7);
+list.add(8);
+list.add(9);
+list.add(10);
+list.add(11);
+list.add(12);
+list.add(13);
+        List list1 = list.subList(10, list.size());
+        System.out.println(list1);
         System.out.println(list);
+
     }
 
 }

@@ -1,7 +1,9 @@
 server:
-  port: 8090
+  port: 8000
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://localhost:3306/springboot_demo
     username: root
@@ -34,6 +36,8 @@ spring:
     #连接超时时间（毫秒）
     timeout: 30000
     database: 1
+  application:
+    name: Mycroft
 
 # mybatis的mapper书写路径
 mybatis:
@@ -76,3 +80,10 @@ mycroft:
     observer:
     name: ${OBSERVER_NAME:MYCROFT}
     ip: ${IP_ADDRESS:127.0.0.1}
+
+security:
+  basic:
+    enabled: false
+interceptor:
+  exclude:
+    path: /**
