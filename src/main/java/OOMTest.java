@@ -5,6 +5,7 @@
  */
 
 import okhttp3.*;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
  * @description
  */
 public class OOMTest {
+    private static final ThreadLocal<Collection<Long>> variables = new ThreadLocal<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -56,23 +58,30 @@ public class OOMTest {
         }*/
 
 
-List list = new ArrayList();
-list.add(1);
-list.add(2);
-list.add(3);
-list.add(4);
-list.add(5);
-list.add(6);
-list.add(7);
-list.add(8);
-list.add(9);
-list.add(10);
-list.add(11);
-list.add(12);
-list.add(13);
-        List list1 = list.subList(10, list.size());
-        System.out.println(list1);
-        System.out.println(list);
+        long i  = 1<<2;
+        System.out.println(i);
+
+        List<Integer> list = new ArrayList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(9);
+        list.add(10);
+        list.add(11);
+        list.add(12);
+        list.add(13);
+        Collection<Long> collection = variables.get();
+        if (CollectionUtils.isEmpty(collection)) {
+            collection = new HashSet<>();
+            for (Integer id : list) {
+                collection.add(Long.valueOf(String.valueOf(id)));
+            }
+        }
 
     }
 

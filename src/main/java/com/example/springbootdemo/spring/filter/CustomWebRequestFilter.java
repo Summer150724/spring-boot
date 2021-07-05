@@ -5,7 +5,12 @@
  */
 package com.example.springbootdemo.spring.filter;
 
+import com.example.springbootdemo.spring.listener.ContextClosedEventListener;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -25,7 +30,14 @@ import java.io.IOException;
  */
 @Slf4j
 @Component
-public class CustomWebRequestFilter implements Filter {
+public class CustomWebRequestFilter implements Filter, ApplicationContextAware {
+
+    private static ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        CustomWebRequestFilter.applicationContext = applicationContext;
+    }
 
     /**
      * The <code>doFilter</code> method of the Filter is called by the container
@@ -59,6 +71,7 @@ public class CustomWebRequestFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        applicationContext.getBean(ContextClosedEventListener.class);
         chain.doFilter(request, response);
     }
 

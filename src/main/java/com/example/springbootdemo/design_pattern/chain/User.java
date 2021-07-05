@@ -15,6 +15,7 @@ import lombok.Data;
  */
 @Data
 public class User {
+    private transient volatile Object [] array;
     private Long id;
     private String name;
     private Integer age;
